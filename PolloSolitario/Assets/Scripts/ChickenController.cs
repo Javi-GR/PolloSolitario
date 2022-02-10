@@ -6,6 +6,9 @@ using UnityEngine;
 public class ChickenController : MonoBehaviour
 {
     //Handling
+    public int maxHealth = 40;
+    public int currentHealth;
+    public HealthBarScript healthBar;
     public float rotationSpeed = 600;
     public float walkSpeed = 5;
     public float runSpeed = 8;
@@ -27,11 +30,19 @@ public class ChickenController : MonoBehaviour
 
     private Quaternion targetRotation;
     // Start is called before the first frame update
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+    }       
     void Start()
     {
         controller = GetComponent<CharacterController>();
         cam = Camera.main;
         plane = new Plane(Vector3.up, Vector3.zero);
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+        
     }
 
     // Update is called once per frame
@@ -45,6 +56,10 @@ public class ChickenController : MonoBehaviour
        }else if(Input.GetButton("Shoot"))
        {
            gun.ShootAuto();
+       }
+       if(Input.GetKeyDown(KeyCode.L))
+       {
+           TakeDamage(10);
        }
         
     }
@@ -87,6 +102,7 @@ public class ChickenController : MonoBehaviour
 
     
 }
+
 public static class Helpers
     {
         private static Matrix4x4 _isoMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
