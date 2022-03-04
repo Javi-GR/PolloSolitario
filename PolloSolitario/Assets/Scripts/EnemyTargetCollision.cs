@@ -15,8 +15,11 @@ public class EnemyTargetCollision : MonoBehaviour
         }
     }
 
+    
     void Die()
     {
         Destroy(gameObject);
     }
+    
+   
 }

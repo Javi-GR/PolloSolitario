@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class ChickenController : MonoBehaviour
@@ -32,8 +33,13 @@ public class ChickenController : MonoBehaviour
     // Start is called before the first frame update
     void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
+        if(currentHealth <= 0){
+            ResetGame();
+        }
+            currentHealth -= damage;
+            healthBar.SetHealth(currentHealth);
+        
+        
     }       
     void Start()
     {
@@ -57,13 +63,14 @@ public class ChickenController : MonoBehaviour
        {
            gun.ShootAuto();
        }
-       if(Input.GetKeyDown(KeyCode.L))
-       {
-           TakeDamage(10);
-       }
         
     }
 
+    void ResetGame()
+    {
+        transform.position = new Vector3(15.12787f, 0.3f, 22f);
+        healthBar.SetHealth(40);
+    }
     void ControlMouse()
     {
         var ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -100,8 +107,18 @@ public class ChickenController : MonoBehaviour
         controller.Move(motion * Time.deltaTime);
     }
 
-    
+    void OnControllerColliderHit(ControllerColliderHit collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("Un enemigo ha impactado contra el pollo");
+            EnemyAi enemy= collision.gameObject.GetComponent<EnemyAi>();
+            enemy.Attack();
+            TakeDamage(10);
+        }
+    }
 }
+    
 
 public static class Helpers
     {
