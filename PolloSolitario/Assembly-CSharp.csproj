@@ -44,11 +44,12 @@
      <Compile Include="Assets\LowPolyWater_Pack\Scripts\LowPolyWater.cs" />
      <Compile Include="Assets\Scripts\SpawnEnemies.cs" />
      <Compile Include="Assets\Scripts\HealthBarScript.cs" />
+     <Compile Include="Assets\Scripts\LevelLoaderScript.cs" />
      <Compile Include="Assets\simple modular human\scripts\clothing.cs" />
      <Compile Include="Assets\Scripts\EnemyAi.cs" />
      <Compile Include="Assets\Scripts\AnimController.cs" />
      <Compile Include="Assets\Scripts\EnemyTargetCollision.cs" />
-     <Compile Include="Assets\LevelLoaderScript.cs" />
+     <Compile Include="Assets\Scripts\MainMenuController.cs" />
      <None Include="Assets\simple modular human\readMe.txt" />
      <None Include="Assets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />
      <None Include="Assets\LowPolyWater_Pack\LowPoly Island\Credits.txt" />
