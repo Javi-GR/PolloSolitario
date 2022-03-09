@@ -8,7 +8,7 @@ public class WaterKillsScript : MonoBehaviour
     void Start(){
         ChickenController chicken = GameObject.FindGameObjectWithTag("Player").GetComponent<ChickenController>();
     }
-   void OnCollisionEnter(Collider collider){
+   void OnCollisionEnter(Collision collider){
        if(collider.gameObject.tag == "Player"){
            Debug.Log("Colliding with the character");
             chicken.ResetGame();

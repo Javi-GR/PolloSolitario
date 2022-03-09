@@ -9,11 +9,13 @@ public class Gun : MonoBehaviour
     public enum GunType {Semi, Burst, Auto};
     private float secondsBetweenShots;
 
-    public float damage = 1f;
+    public int damage = 10;
 
     //public Transform shellEjectionpoiint;
    // public Rigidbody shell;
     public float rpm;
+
+    public GameObject projectile;
     private float nextPossibleShot;
     public GunType gunType;
     public Transform spawn;
@@ -34,10 +36,15 @@ public class Gun : MonoBehaviour
             {
                 shotDistance = hit.distance;
                 Debug.Log(hit.transform.name);
-                EnemyAi target = hit.transform.GetComponent<EnemyAi>();
+                ChaserEnemyController target = hit.transform.GetComponent<ChaserEnemyController>();
+                ShootingEnemyController shootingTarget = hit.transform.GetComponent<ShootingEnemyController>();
                 if(target!=null)
                 {
                     target.TakeDamage(damage);
+                }
+                if(shootingTarget!=null){
+
+                    shootingTarget.TakeDamage(damage);
                 }
             }
 
@@ -45,9 +52,12 @@ public class Gun : MonoBehaviour
             Debug.DrawRay(ray.origin, ray.direction * shotDistance, Color.red, 1);
             AudioSource audio = GetComponent<AudioSource>();
             audio.Play();
+
+            GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity);
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            StartCoroutine(destroyBullet(bullet));
             
-            //Rigidbody newShell = Instantiate(shell, shellEjectionpoiint.position, Quaternion.identity) as Rigidbody;
-           // newShell.AddForce(shellEjectionpoiint.forward * Random.Range(150f, 200f) + spawn.forward * Random.Range(-10f, 10f));
 
         }
         
@@ -70,5 +80,10 @@ public class Gun : MonoBehaviour
             canShoot = false;
         }
         return canShoot;
+    }
+     private IEnumerator destroyBullet(GameObject bullet){
+
+        yield return new WaitForSeconds(1);
+        Destroy(bullet);
     }
 }
