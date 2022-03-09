@@ -16,7 +16,7 @@ public class NextLevelTrigger : MonoBehaviour
     }
     public void LoadNextLevel()
     {
-       StartCoroutine(LoadLevel(2));
+       StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex+1));
     }
     IEnumerator LoadLevel(int levelIndx)
     {

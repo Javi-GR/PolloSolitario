@@ -31,15 +31,10 @@ public class ChickenController : MonoBehaviour
 
     private Quaternion targetRotation;
     // Start is called before the first frame update
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
-        if(currentHealth <= 0){
-            ResetGame();
-        }
-            currentHealth -= damage;
-            healthBar.SetHealth(currentHealth);
-        
-        
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
     }       
     void Start()
     {
@@ -66,10 +61,12 @@ public class ChickenController : MonoBehaviour
         
     }
 
-    void ResetGame()
+    public void ResetGame()
     {
-        transform.position = new Vector3(15.12787f, 0.3f, 22f);
-        healthBar.SetHealth(40);
+        gameObject.transform.position = new Vector3(15.12787f, 0.344f, 22.409f);
+        Debug.Log("Resetting Game, current chcicken position "+transform.position);
+        currentHealth = maxHealth;
+        healthBar.SetHealth(currentHealth);
     }
     void ControlMouse()
     {
@@ -109,12 +106,10 @@ public class ChickenController : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.tag == "Water")
         {
-            Debug.Log("Un enemigo ha impactado contra el pollo");
-            EnemyAi enemy= collision.gameObject.GetComponent<EnemyAi>();
-            enemy.Attack();
-            TakeDamage(10);
+            Debug.Log("Has caido al agua");
+            ResetGame();
         }
     }
 }

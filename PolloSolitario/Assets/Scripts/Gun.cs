@@ -34,7 +34,7 @@ public class Gun : MonoBehaviour
             {
                 shotDistance = hit.distance;
                 Debug.Log(hit.transform.name);
-                EnemyTargetCollision target = hit.transform.GetComponent<EnemyTargetCollision>();
+                EnemyAi target = hit.transform.GetComponent<EnemyAi>();
                 if(target!=null)
                 {
                     target.TakeDamage(damage);
