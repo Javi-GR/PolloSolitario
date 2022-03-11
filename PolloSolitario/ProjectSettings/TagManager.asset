@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - sittingpoint
   - Water
+  - HUD
   layers:
   - Default
   - TransparentFX

@@ -60,9 +60,12 @@ public class ChickenController : MonoBehaviour
        }
         
     }
-
-    public void ResetGame()
+    public void StartPoint(){
+        StartCoroutine("ResetGame");
+    }
+    private IEnumerator ResetGame()
     {
+        yield return new WaitForSeconds(1);
         gameObject.transform.position = new Vector3(15.12787f, 0.344f, 22.409f);
         Debug.Log("Resetting Game, current chcicken position "+transform.position);
         currentHealth = maxHealth;
@@ -109,7 +112,7 @@ public class ChickenController : MonoBehaviour
         if(collision.gameObject.tag == "Water")
         {
             Debug.Log("Has caido al agua");
-            ResetGame();
+            StartPoint();
         }
     }
 }

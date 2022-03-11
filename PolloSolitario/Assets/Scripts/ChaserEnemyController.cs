@@ -25,6 +25,7 @@ public class ChaserEnemyController : MonoBehaviour
     void Die()
     {
         Destroy(gameObject);
+
     }
     
     private void Start()
@@ -34,7 +35,7 @@ public class ChaserEnemyController : MonoBehaviour
     private void Update(){
 
        if(chicken.currentHealth<=0){
-            chicken.ResetGame();
+            chicken.StartPoint();
         }
         float dist = Vector3.Distance(transform.position, target.transform.position);
         if(dist<2){

@@ -36,24 +36,25 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\StatCount.cs" />
      <Compile Include="Assets\Scripts\ChickenController.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Gun.cs" />
+     <Compile Include="Assets\ExternalAssets\SimplePoly - Town Pack\Standard Assets\Effects\ImageEffects\Scripts\SunShafts.cs" />
      <Compile Include="Assets\Scripts\ShootingEnemyController.cs" />
      <Compile Include="Assets\ExternalAssets\simple modular human\scripts\Test_script.cs" />
-     <Compile Include="Assets\Scripts\WaterKillsScript.cs" />
+     <Compile Include="Assets\ExternalAssets\SimplePoly - Town Pack\Standard Assets\Effects\ImageEffects\Scripts\PostEffectsBase.cs" />
      <Compile Include="Assets\Scripts\NextLevelTrigger.cs" />
      <Compile Include="Assets\ExternalAssets\LowPolyWater_Pack\Scripts\LowPolyWater.cs" />
      <Compile Include="Assets\Scripts\SpawnEnemies.cs" />
      <Compile Include="Assets\Scripts\HealthBarScript.cs" />
      <Compile Include="Assets\Scripts\LevelLoaderScript.cs" />
      <Compile Include="Assets\ExternalAssets\simple modular human\scripts\clothing.cs" />
+     <Compile Include="Assets\ExternalAssets\SimplePoly - Town Pack\Standard Assets\Effects\ImageEffects\Scripts\Quads.cs" />
      <Compile Include="Assets\Scripts\MainMenuController.cs" />
      <Compile Include="Assets\Scripts\ChaserEnemyController.cs" />
      <Compile Include="Assets\Scripts\AnimController.cs" />
-     <Compile Include="Assets\ExternalAssets\SimplePoly - Town Pack\Standard Assets\Effects\ImageEffects\Scripts\Quads.cs" />
-     <Compile Include="Assets\ExternalAssets\SimplePoly - Town Pack\Standard Assets\Effects\ImageEffects\Scripts\PostEffectsBase.cs" />
-     <Compile Include="Assets\ExternalAssets\SimplePoly - Town Pack\Standard Assets\Effects\ImageEffects\Scripts\SunShafts.cs" />
+     <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <None Include="Assets\ExternalAssets\simple modular human\readMe.txt" />
      <None Include="Assets\ExternalAssets\MedievalTownExteriors\Readme.txt" />
      <None Include="Assets\ExternalAssets\SimplePoly - Town Pack\Standard Assets\Effects\ImageEffects\Shaders\SunShaftsComposite.shader" />
