@@ -8,6 +8,7 @@ public class ChaserEnemyController : MonoBehaviour
     private NavMeshAgent agent = null;
     private bool alreadyAttacking;
     GameObject target;
+    StatCount statCount;
     ChickenController chicken;
 
     public int health = 50;
@@ -25,6 +26,7 @@ public class ChaserEnemyController : MonoBehaviour
     void Die()
     {
         Destroy(gameObject);
+        statCount.AddKill();
 
     }
     
@@ -77,5 +79,6 @@ public class ChaserEnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player");
         chicken = target.GetComponent<ChickenController>();
+        statCount = GameObject.FindGameObjectWithTag("HUD").GetComponent<StatCount>();
     }
 }

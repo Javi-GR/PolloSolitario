@@ -2902,6 +2902,7 @@ GameObject:
   - component: {fileID: 837526566}
   - component: {fileID: 837526565}
   - component: {fileID: 837526564}
+  - component: {fileID: 837526568}
   m_Layer: 5
   m_Name: HUD
   m_TagString: HUD
@@ -2995,6 +2996,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &837526568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837526563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db8d517868b9c249a9b6db108d0dcb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killsText: {fileID: 1315307785}
+  timerText: {fileID: 1790806645}
 --- !u!1001 &839803260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4708,7 +4723,7 @@ GameObject:
   - component: {fileID: 1315307786}
   - component: {fileID: 1315307785}
   m_Layer: 5
-  m_Name: Text
+  m_Name: KillText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6182,7 +6197,7 @@ GameObject:
   - component: {fileID: 1790806646}
   - component: {fileID: 1790806645}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TimerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6240,7 +6255,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ' NIVEL:           XXXX'
+  m_Text: ' TIEMPO:          00:00'
 --- !u!222 &1790806646
 CanvasRenderer:
   m_ObjectHideFlags: 0
