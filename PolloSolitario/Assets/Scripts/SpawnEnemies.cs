@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
 {
-    public GameObject chaserEnemies;
+    public GameObject enemy;
     public Transform player;
-    private bool hasSpawned = false;
-
+    private bool hasSpawned = false;    
     void Spawn()
     {
         if(checkIfSpawned()!= true){
@@ -15,14 +14,15 @@ public class SpawnEnemies : MonoBehaviour
         }
             
     }
+    
 
     // Start is called before the first frame update
     void enemySpawn()
     {
-            GameObject chaserEnemy =Instantiate(chaserEnemies, gameObject.transform.position, Quaternion.identity);
-            
+            GameObject chaserEnemy =Instantiate(enemy, gameObject.transform.position, Quaternion.identity);
+        
     }
-
+   
     // Update is called once per frame
     void Update()
     {
@@ -37,5 +37,6 @@ public class SpawnEnemies : MonoBehaviour
         }
         return hasSpawned;
     }
+    
    
 }

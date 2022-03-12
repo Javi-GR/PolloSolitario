@@ -12,6 +12,7 @@ public class ShootingEnemyController : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
 
     public int health = 50;
+    StatCount statCount;
 
     //Patroling
     public Vector3 walkPoint;
@@ -30,7 +31,11 @@ public class ShootingEnemyController : MonoBehaviour
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
-        agent = GetComponent<NavMeshAgent>();
+        
+        agent = GetComponentInChildren<NavMeshAgent>();
+        statCount = GameObject.FindGameObjectWithTag("HUD").GetComponent<StatCount>();
+        
+       
     }
 
     private void Update()
@@ -71,14 +76,17 @@ public class ShootingEnemyController : MonoBehaviour
 
     private void ChasePlayer()
     {
+        
         agent.SetDestination(player.position);
+
     }
 
     private void AttackPlayer()
     {
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
-
+        
+        Vector3 rotationOffset = new Vector3(player.position.x, player.position.y, player.position.z+90f);
         transform.LookAt(player);
 
         if (!alreadyAttacked)
@@ -106,6 +114,7 @@ public class ShootingEnemyController : MonoBehaviour
     private void DestroyEnemy()
     {
         Destroy(gameObject);
+        statCount.AddKill();
     }
 
     private void OnDrawGizmosSelected()

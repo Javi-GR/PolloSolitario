@@ -7,10 +7,12 @@ public class NextLevelTrigger : MonoBehaviour
 {
     public Animator transition;
     void OnTriggerEnter(Collider other){
-        Debug.Log("Has superado el tutorial");
+        
         if(other.gameObject.name == ("Player"))
         {
-             LoadNextLevel();
+            Debug.Log("Has superado el tutorial");
+            DontDestroyOnLoad(GameObject.FindGameObjectWithTag("HUD"));
+            LoadNextLevel();
         }
        
     }

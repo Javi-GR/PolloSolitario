@@ -11,13 +11,11 @@ public class StatCount : MonoBehaviour
     public Text timerText; 
     private float timer = 0.0f;
     private bool isTimer = false;
-    void LoadData(){
-
-    }
-    void SaveData(){
-
-    }
-
+    public Text roundText;
+    public Text completedLevel;
+    private int roundN = 1;
+    private bool nextRound = false;
+   
     void Update()
     {
         if(isTimer)
@@ -28,8 +26,17 @@ public class StatCount : MonoBehaviour
         if(killed){
 
             kills++;
-            killsText.text = "MUERTES :   "+kills;
+            killsText.text = " MUERTES :   "+kills;
             killed = false;
+        }
+        if(nextRound){
+            if(roundN == 4){
+                roundText.text = " RONDA :  COMPLETADO";
+                nextRound = false;
+            }
+            roundN++;
+            roundText.text = " RONDA :   "+roundN;
+            nextRound = false;
         }
     }
     void Start(){
@@ -39,7 +46,11 @@ public class StatCount : MonoBehaviour
     void DisplayTime(){
         int minutes = Mathf.FloorToInt(timer / 60.0f);
         int seconds = Mathf.FloorToInt(timer -minutes * 60);
-        timerText.text = "TIEMPO :   "+string.Format("{0:00}:{1:00}", minutes, seconds);
+        timerText.text = " TIEMPO :   "+string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+    public void DisplayRound()
+    {
+        roundText.text = " RONDA :   "+roundN;
     }
     public void StartTimer()
     {
@@ -53,8 +64,28 @@ public class StatCount : MonoBehaviour
     {
         timer = 0.0f;
     }
+    public void AddRound(){
+        nextRound = true;
+    }
     public void AddKill()
     {
         killed = true;
+    }
+    public int GetRounds()
+    {
+        return roundN;
+    }
+    public int GetKills(){
+        return kills;
+    }
+    public void LevelCompleted(){
+        StartCoroutine(ShowCongratulations());
+        
+    }
+    private IEnumerator ShowCongratulations(){
+        completedLevel.text = "NIVEL COMPLETADO";
+        yield return new WaitForSeconds(3);
+        completedLevel.text = "";
+
     }
 }

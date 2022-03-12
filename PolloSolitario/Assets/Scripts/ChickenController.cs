@@ -9,7 +9,7 @@ public class ChickenController : MonoBehaviour
     //Handling
     public int maxHealth = 40;
     public int currentHealth;
-    public HealthBarScript healthBar;
+    HealthBarScript healthBar;
     public float rotationSpeed = 600;
     public float walkSpeed = 5;
     public float runSpeed = 8;
@@ -41,6 +41,7 @@ public class ChickenController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         cam = Camera.main;
         plane = new Plane(Vector3.up, Vector3.zero);
+        healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBarScript>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         
