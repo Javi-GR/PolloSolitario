@@ -10,6 +10,8 @@ TagManager:
   - HUD
   - HealthBar
   - ShootingEnemy
+  - Coin
+  - DamageParticles
   layers:
   - Default
   - TransparentFX

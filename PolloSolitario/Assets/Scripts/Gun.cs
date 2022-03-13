@@ -35,7 +35,6 @@ public class Gun : MonoBehaviour
             if(Physics.Raycast(ray, out hit, shotDistance))
             {
                 shotDistance = hit.distance;
-                Debug.Log(hit.transform.name);
                 ChaserEnemyController target = hit.transform.GetComponent<ChaserEnemyController>();
                 ShootingEnemyController shootingTarget = hit.transform.GetComponent<ShootingEnemyController>();
                 if(target!=null)
@@ -55,7 +54,7 @@ public class Gun : MonoBehaviour
 
             GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            rb.AddForce(transform.forward * 60f, ForceMode.Impulse);
             StartCoroutine(destroyBullet(bullet));
             
 

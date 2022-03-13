@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class ChaserEnemyController : MonoBehaviour
 {
     private NavMeshAgent agent = null;
+    ParticleSystem particles;
     private bool alreadyAttacking;
     GameObject target;
     StatCount statCount;
@@ -16,6 +17,7 @@ public class ChaserEnemyController : MonoBehaviour
     public void TakeDamage (int amount)
     {
         health -= amount;
+        playParticles();
         if(health <= 0f)
         {
             Die();
@@ -28,6 +30,11 @@ public class ChaserEnemyController : MonoBehaviour
         Destroy(gameObject);
         statCount.AddKill();
 
+    }
+    private void playParticles()
+    {
+        particles.transform.position = gameObject.transform.position;
+        particles.Play();
     }
     
     private void Start()
@@ -79,6 +86,7 @@ public class ChaserEnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player");
         chicken = target.GetComponent<ChickenController>();
+        particles = GameObject.FindGameObjectWithTag("DamageParticles").GetComponent<ParticleSystem>();
         statCount = GameObject.FindGameObjectWithTag("HUD").GetComponent<StatCount>();
     }
 }

@@ -40,9 +40,8 @@
      <Compile Include="Assets\Scripts\ChickenController.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Gun.cs" />
-     <Compile Include="Assets\ExternalAssets\SimplePoly - Town Pack\Standard Assets\Effects\ImageEffects\Scripts\SunShafts.cs" />
+     <Compile Include="Assets\CoinTrigger.cs" />
      <Compile Include="Assets\Scripts\ShootingEnemyController.cs" />
-     <Compile Include="Assets\ExternalAssets\SimplePoly - Town Pack\Standard Assets\Effects\ImageEffects\Scripts\PostEffectsBase.cs" />
      <Compile Include="Assets\Scripts\NextLevelTrigger.cs" />
      <Compile Include="Assets\ExternalAssets\LowPolyWater_Pack\Scripts\LowPolyWater.cs" />
      <Compile Include="Assets\Scripts\SpawnEnemies.cs" />
@@ -50,15 +49,12 @@
      <Compile Include="Assets\Scripts\HealthBarScript.cs" />
      <Compile Include="Assets\Scripts\LevelLoaderScript.cs" />
      <Compile Include="Assets\Scripts\DialogueTrigger.cs" />
-     <Compile Include="Assets\ExternalAssets\SimplePoly - Town Pack\Standard Assets\Effects\ImageEffects\Scripts\Quads.cs" />
+     <Compile Include="Assets\Scripts\LevelSpawn.cs" />
      <Compile Include="Assets\Scripts\MainMenuController.cs" />
      <Compile Include="Assets\Scripts\ChaserEnemyController.cs" />
      <Compile Include="Assets\Scripts\AnimController.cs" />
-     <Compile Include="Assets\Scripts\LevelSpawn.cs" />
      <None Include="Assets\ExternalAssets\MedievalTownExteriors\Readme.txt" />
-     <None Include="Assets\ExternalAssets\SimplePoly - Town Pack\Standard Assets\Effects\ImageEffects\Shaders\SunShaftsComposite.shader" />
      <None Include="Assets\ExternalAssets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />
-     <None Include="Assets\ExternalAssets\SimplePoly - Town Pack\Standard Assets\Effects\ImageEffects\Shaders\SimpleClear.shader" />
      <None Include="Assets\ExternalAssets\LowPolyWater_Pack\LowPoly Island\Credits.txt" />
      <None Include="Assets\ExternalAssets\MedievalTownExteriors\Readme FIRST!.txt" />
     <Reference Include="UnityEngine">
@@ -282,6 +278,9 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.25f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+        <HintPath>C:\Users\javi1\Documents\GitHub\PolloSolitario\PolloSolitario\Library\PackageCache\com.unity.burst@1.3.4\Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
         <HintPath>C:\Users\javi1\Documents\GitHub\PolloSolitario\PolloSolitario\Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
@@ -634,6 +633,9 @@
     <Reference Include="Unity.VSCode.Editor">
         <HintPath>C:\Users\javi1\Documents\GitHub\PolloSolitario\PolloSolitario\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Burst">
+        <HintPath>C:\Users\javi1\Documents\GitHub\PolloSolitario\PolloSolitario\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
         <HintPath>C:\Users\javi1\Documents\GitHub\PolloSolitario\PolloSolitario\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -649,17 +651,32 @@
     <Reference Include="Unity.TextMeshPro">
         <HintPath>C:\Users\javi1\Documents\GitHub\PolloSolitario\PolloSolitario\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+        <HintPath>C:\Users\javi1\Documents\GitHub\PolloSolitario\PolloSolitario\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Editor">
+        <HintPath>C:\Users\javi1\Documents\GitHub\PolloSolitario\PolloSolitario\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.UI">
         <HintPath>C:\Users\javi1\Documents\GitHub\PolloSolitario\PolloSolitario\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-        <HintPath>C:\Users\javi1\Documents\GitHub\PolloSolitario\PolloSolitario\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
         <HintPath>C:\Users\javi1\Documents\GitHub\PolloSolitario\PolloSolitario\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Animation.Rigging.Editor">
+        <HintPath>C:\Users\javi1\Documents\GitHub\PolloSolitario\PolloSolitario\Library\ScriptAssemblies\Unity.Animation.Rigging.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
         <HintPath>C:\Users\javi1\Documents\GitHub\PolloSolitario\PolloSolitario\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PlasticSCM.Editor">
+        <HintPath>C:\Users\javi1\Documents\GitHub\PolloSolitario\PolloSolitario\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Animation.Rigging">
+        <HintPath>C:\Users\javi1\Documents\GitHub\PolloSolitario\PolloSolitario\Library\ScriptAssemblies\Unity.Animation.Rigging.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+        <HintPath>C:\Users\javi1\Documents\GitHub\PolloSolitario\PolloSolitario\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

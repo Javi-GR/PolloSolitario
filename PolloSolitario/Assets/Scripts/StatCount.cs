@@ -13,6 +13,9 @@ public class StatCount : MonoBehaviour
     private bool isTimer = false;
     public Text roundText;
     public Text completedLevel;
+    public Text coinCount;
+    private bool coinTrigger = false;
+    private int coins = 0;
     private int roundN = 1;
     private bool nextRound = false;
    
@@ -29,14 +32,18 @@ public class StatCount : MonoBehaviour
             killsText.text = " MUERTES :   "+kills;
             killed = false;
         }
-        if(nextRound){
-            if(roundN == 4){
-                roundText.text = " RONDA :  COMPLETADO";
-                nextRound = false;
-            }
+        
+        if(coinTrigger){
+            coins++;
+            coinCount.text = " "+coins;
+            coinTrigger = false;
+        }
+        if(nextRound)
+        {
             roundN++;
-            roundText.text = " RONDA :   "+roundN;
+            DisplayRound();
             nextRound = false;
+
         }
     }
     void Start(){
@@ -67,9 +74,13 @@ public class StatCount : MonoBehaviour
     public void AddRound(){
         nextRound = true;
     }
+   
     public void AddKill()
     {
         killed = true;
+    }
+    public void ResetRounds(){
+        roundN = 1;
     }
     public int GetRounds()
     {
@@ -80,7 +91,9 @@ public class StatCount : MonoBehaviour
     }
     public void LevelCompleted(){
         StartCoroutine(ShowCongratulations());
-        
+    }
+    public void AddCoin(){
+        coinTrigger = true;
     }
     private IEnumerator ShowCongratulations(){
         completedLevel.text = "NIVEL COMPLETADO";

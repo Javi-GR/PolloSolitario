@@ -7,7 +7,7 @@ public class ShootingEnemyController : MonoBehaviour
 {
     public NavMeshAgent agent;
 
-    public Transform player;
+    Transform player;
 
     public LayerMask whatIsGround, whatIsPlayer;
 
@@ -18,6 +18,8 @@ public class ShootingEnemyController : MonoBehaviour
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
+
+    ParticleSystem particles;
 
     //Attacking
     public float timeBetweenAttacks;
@@ -31,7 +33,7 @@ public class ShootingEnemyController : MonoBehaviour
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
-        
+        particles = GameObject.FindGameObjectWithTag("DamageParticles").GetComponent<ParticleSystem>();
         agent = GetComponentInChildren<NavMeshAgent>();
         statCount = GameObject.FindGameObjectWithTag("HUD").GetComponent<StatCount>();
         
@@ -108,6 +110,8 @@ public class ShootingEnemyController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        particles.transform.position = gameObject.transform.position;
+        particles.Play();
 
         if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
     }

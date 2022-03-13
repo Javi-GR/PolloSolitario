@@ -16,6 +16,8 @@ public class ChickenController : MonoBehaviour
     private CharacterController controller;
     private Camera cam;
     private Plane plane;
+    StatCount statCount;
+    AudioSource audioSource;
 
     //NOT YET IMPLEMENTED BELOW 
     //[SerializeField] private Animator chickenAnim;
@@ -39,7 +41,9 @@ public class ChickenController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        statCount = GameObject.FindGameObjectWithTag("HUD").GetComponent<StatCount>();
         cam = Camera.main;
+        audioSource = GameObject.FindGameObjectWithTag("Water").GetComponent<AudioSource>();
         plane = new Plane(Vector3.up, Vector3.zero);
         healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBarScript>();
         currentHealth = maxHealth;
@@ -62,15 +66,18 @@ public class ChickenController : MonoBehaviour
         
     }
     public void StartPoint(){
-        StartCoroutine("ResetGame");
+        StartCoroutine(ResetGame());
     }
     private IEnumerator ResetGame()
     {
-        yield return new WaitForSeconds(1);
+    
+       
         gameObject.transform.position = new Vector3(15.12787f, 0.344f, 22.409f);
         Debug.Log("Resetting Game, current chcicken position "+transform.position);
         currentHealth = maxHealth;
         healthBar.SetHealth(currentHealth);
+        yield return new WaitForSeconds(0.2f);
+        audioSource.Play();
     }
     void ControlMouse()
     {
@@ -112,10 +119,11 @@ public class ChickenController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Water")
         {
-            Debug.Log("Has caido al agua");
             StartPoint();
         }
+        
     }
+  
 }
     
 

@@ -934,7 +934,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de556f99daf7d8c4dab47d4467e3e2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  particles: {fileID: 3453505043862692756, guid: 2ab96be4bee364443b807d10fadfe483, type: 3}
+  health: 30
 --- !u!195 &5218593675786966039
 NavMeshAgent:
   m_ObjectHideFlags: 0
