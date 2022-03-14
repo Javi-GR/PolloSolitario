@@ -9,9 +9,10 @@ TagManager:
   - Water
   - HUD
   - HealthBar
-  - ShootingEnemy
   - Coin
   - DamageParticles
+  - EnemyBullet
+  - SpawningEnemy
   layers:
   - Default
   - TransparentFX

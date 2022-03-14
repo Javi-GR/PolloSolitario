@@ -88,14 +88,14 @@ public class ShootingEnemyController : MonoBehaviour
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
         
-        Vector3 rotationOffset = new Vector3(player.position.x, player.position.y, player.position.z+90f);
+        Vector3 rotationOffset = new Vector3(player.position.x, player.position.y, player.position.z);
         transform.LookAt(player);
 
         if (!alreadyAttacked)
         {
             GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            rb.AddForce(transform.forward * 25f, ForceMode.Impulse);
             StartCoroutine(destroyBullet(bullet));
 
             alreadyAttacked = true;
@@ -131,7 +131,10 @@ public class ShootingEnemyController : MonoBehaviour
 
     private IEnumerator destroyBullet(GameObject bullet){
 
-        yield return new WaitForSeconds(1);
-        Destroy(bullet);
+        yield return new WaitForSeconds(0.5f);
+        if(bullet!=null){
+            Destroy(bullet);
+        }
+        
     }
 }

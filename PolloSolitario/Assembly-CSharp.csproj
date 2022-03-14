@@ -40,7 +40,7 @@
      <Compile Include="Assets\Scripts\ChickenController.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Gun.cs" />
-     <Compile Include="Assets\CoinTrigger.cs" />
+     <Compile Include="Assets\Scripts\CoinTrigger.cs" />
      <Compile Include="Assets\Scripts\ShootingEnemyController.cs" />
      <Compile Include="Assets\Scripts\NextLevelTrigger.cs" />
      <Compile Include="Assets\ExternalAssets\LowPolyWater_Pack\Scripts\LowPolyWater.cs" />
@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\MainMenuController.cs" />
      <Compile Include="Assets\Scripts\ChaserEnemyController.cs" />
      <Compile Include="Assets\Scripts\AnimController.cs" />
+     <Compile Include="Assets\Scripts\BulletCollision.cs" />
      <None Include="Assets\ExternalAssets\MedievalTownExteriors\Readme.txt" />
      <None Include="Assets\ExternalAssets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />
      <None Include="Assets\ExternalAssets\LowPolyWater_Pack\LowPoly Island\Credits.txt" />

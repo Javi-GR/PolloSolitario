@@ -87,6 +87,7 @@ public class LevelSpawn : MonoBehaviour
         {
             //HERE IS WHERE THE GAMESTATE IS ACTUALLY COMPLETE
             statCount.LevelCompleted();
+            nextWave = 0;
             state = SpawnState.COMPLETE;
         }else
         {
@@ -102,7 +103,7 @@ public class LevelSpawn : MonoBehaviour
         if(searchCountdown<=0f)
         {
             searchCountdown = 1f;
-            if(GameObject.FindGameObjectWithTag("ShootingEnemy")==null)
+            if(GameObject.FindGameObjectWithTag("SpawningEnemy")==null)
             {
                 Debug.Log("Enemy found alive, continue killing");
                 return false;

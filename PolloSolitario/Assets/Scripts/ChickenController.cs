@@ -14,10 +14,13 @@ public class ChickenController : MonoBehaviour
     public float walkSpeed = 5;
     public float runSpeed = 8;
     private CharacterController controller;
+
+    public Transform resetPosition;
     private Camera cam;
     private Plane plane;
+    private float dashTime = 0.2f;
     StatCount statCount;
-    AudioSource audioSource;
+    AudioSource audioSourceWater;
 
     //NOT YET IMPLEMENTED BELOW 
     //[SerializeField] private Animator chickenAnim;
@@ -35,15 +38,22 @@ public class ChickenController : MonoBehaviour
     // Start is called before the first frame update
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
+        if(currentHealth>0)
+        {
+            currentHealth -= damage;
+            healthBar.SetHealth(currentHealth);
+        }
+        else{
+            StartPoint();
+        }
+        
     }       
     void Start()
     {
         controller = GetComponent<CharacterController>();
         statCount = GameObject.FindGameObjectWithTag("HUD").GetComponent<StatCount>();
         cam = Camera.main;
-        audioSource = GameObject.FindGameObjectWithTag("Water").GetComponent<AudioSource>();
+        audioSourceWater = GameObject.FindGameObjectWithTag("Water").GetComponent<AudioSource>();
         plane = new Plane(Vector3.up, Vector3.zero);
         healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBarScript>();
         currentHealth = maxHealth;
@@ -62,6 +72,9 @@ public class ChickenController : MonoBehaviour
        }else if(Input.GetButton("Shoot"))
        {
            gun.ShootAuto();
+       }else if(Input.GetKeyDown(KeyCode.Space))
+       {
+           StartCoroutine(Dash());
        }
         
     }
@@ -72,12 +85,15 @@ public class ChickenController : MonoBehaviour
     {
     
        
-        gameObject.transform.position = new Vector3(15.12787f, 0.344f, 22.409f);
+        gameObject.transform.position = resetPosition.transform.position;
         Debug.Log("Resetting Game, current chcicken position "+transform.position);
         currentHealth = maxHealth;
         healthBar.SetHealth(currentHealth);
         yield return new WaitForSeconds(0.2f);
-        audioSource.Play();
+        if(audioSourceWater != null){
+             audioSourceWater.Play();
+        }
+       
     }
     void ControlMouse()
     {
@@ -120,6 +136,15 @@ public class ChickenController : MonoBehaviour
         if(collision.gameObject.tag == "Water")
         {
             StartPoint();
+        }
+    }
+    private IEnumerator Dash()
+    {
+        float startTime = Time.time;
+        while(Time.time < startTime + dashTime)
+        {
+            controller.Move(transform.forward * 12f * Time.deltaTime);
+            yield return null;
         }
         
     }

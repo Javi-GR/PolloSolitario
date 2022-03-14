@@ -666,7 +666,7 @@ GameObject:
   - component: {fileID: 8914907316525458734}
   m_Layer: 0
   m_Name: char02
-  m_TagString: ShootingEnemy
+  m_TagString: SpawningEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -764,7 +764,7 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1
-  projectile: {fileID: 785443808096121014, guid: 21dd82eab4f60de4ba747f85cd20a751, type: 3}
+  projectile: {fileID: 7422094486371148555, guid: a3d96fad07c439a4aa39aecbee516d10, type: 3}
   sightRange: 10
   attackRange: 7
   playerInSightRange: 0
