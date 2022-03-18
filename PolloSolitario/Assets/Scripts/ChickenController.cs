@@ -15,12 +15,10 @@ public class ChickenController : MonoBehaviour
     public float runSpeed = 8;
     private CharacterController controller;
 
-    public Transform resetPosition;
     private Camera cam;
     private Plane plane;
     private float dashTime = 0.2f;
     StatCount statCount;
-    AudioSource audioSourceWater;
 
     //NOT YET IMPLEMENTED BELOW 
     //[SerializeField] private Animator chickenAnim;
@@ -53,7 +51,6 @@ public class ChickenController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         statCount = GameObject.FindGameObjectWithTag("HUD").GetComponent<StatCount>();
         cam = Camera.main;
-        audioSourceWater = GameObject.FindGameObjectWithTag("Water").GetComponent<AudioSource>();
         plane = new Plane(Vector3.up, Vector3.zero);
         healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBarScript>();
         currentHealth = maxHealth;
@@ -79,22 +76,9 @@ public class ChickenController : MonoBehaviour
         
     }
     public void StartPoint(){
-        StartCoroutine(ResetGame());
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    private IEnumerator ResetGame()
-    {
-    
-       
-        gameObject.transform.position = resetPosition.transform.position;
-        Debug.Log("Resetting Game, current chcicken position "+transform.position);
-        currentHealth = maxHealth;
-        healthBar.SetHealth(currentHealth);
-        yield return new WaitForSeconds(0.2f);
-        if(audioSourceWater != null){
-             audioSourceWater.Play();
-        }
-       
-    }
+   
     void ControlMouse()
     {
         var ray = cam.ScreenPointToRay(Input.mousePosition);

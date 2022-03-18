@@ -38,10 +38,7 @@ public class LevelSpawn : MonoBehaviour
         else{
             statCount.DisplayRound();
         }
-        if(spawnPoints.Length == 0)
-        {
-            Debug.Log("Error no spawn points declared");
-        }
+        
         waveCountdown = timeBetweenWaves;
     }
 
@@ -89,6 +86,8 @@ public class LevelSpawn : MonoBehaviour
             statCount.LevelCompleted();
             nextWave = 0;
             state = SpawnState.COMPLETE;
+            GameObject fences = GameObject.FindGameObjectWithTag("DestroyableFences");
+            Destroy(fences);
         }else
         {
             nextWave++;

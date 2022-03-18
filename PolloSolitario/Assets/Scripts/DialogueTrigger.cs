@@ -23,6 +23,7 @@ public class DialogueTrigger : MonoBehaviour
     void OnTriggerEnter(Collider other){
         if(other.tag=="Player"){
             StartCoroutine(TimeToRead());
+        }
     }
 
     IEnumerator TimeToRead(){
@@ -36,6 +37,6 @@ public class DialogueTrigger : MonoBehaviour
         Destroy(gameObject);
         canvas.SetActive(false);
         canvasIsActive = false;
-        }
+        
     }
 }

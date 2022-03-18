@@ -25,7 +25,7 @@ public class ChaserEnemyController : MonoBehaviour
     }
 
     
-    void Die()
+    public void Die()
     {
         Destroy(gameObject);
         statCount.AddKill();
@@ -47,7 +47,7 @@ public class ChaserEnemyController : MonoBehaviour
             chicken.StartPoint();
         }
         float dist = Vector3.Distance(transform.position, target.transform.position);
-        if(dist<2){
+        if(dist<1.2){
             Attack();
         }
         else{
@@ -55,7 +55,7 @@ public class ChaserEnemyController : MonoBehaviour
         }
          
     }
-    private void MoveToPlayer()
+    public void MoveToPlayer()
     {
         agent.SetDestination(GameObject.FindGameObjectWithTag("Player").transform.position);
     }

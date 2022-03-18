@@ -13,6 +13,7 @@ TagManager:
   - DamageParticles
   - EnemyBullet
   - SpawningEnemy
+  - DestroyableFences
   layers:
   - Default
   - TransparentFX

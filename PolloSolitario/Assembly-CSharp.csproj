@@ -42,21 +42,24 @@
      <Compile Include="Assets\Scripts\Gun.cs" />
      <Compile Include="Assets\Scripts\CoinTrigger.cs" />
      <Compile Include="Assets\Scripts\ShootingEnemyController.cs" />
+     <Compile Include="Assets\Scripts\BeeEnemyController.cs" />
+     <Compile Include="Assets\Scripts\RatEnemyController.cs" />
+     <Compile Include="Assets\Scripts\BulletCollision.cs" />
      <Compile Include="Assets\Scripts\NextLevelTrigger.cs" />
      <Compile Include="Assets\ExternalAssets\LowPolyWater_Pack\Scripts\LowPolyWater.cs" />
      <Compile Include="Assets\Scripts\SpawnEnemies.cs" />
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\HealthBarScript.cs" />
-     <Compile Include="Assets\Scripts\LevelLoaderScript.cs" />
      <Compile Include="Assets\Scripts\DialogueTrigger.cs" />
      <Compile Include="Assets\Scripts\LevelSpawn.cs" />
      <Compile Include="Assets\Scripts\MainMenuController.cs" />
      <Compile Include="Assets\Scripts\ChaserEnemyController.cs" />
      <Compile Include="Assets\Scripts\AnimController.cs" />
-     <Compile Include="Assets\Scripts\BulletCollision.cs" />
      <None Include="Assets\ExternalAssets\MedievalTownExteriors\Readme.txt" />
      <None Include="Assets\ExternalAssets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />
      <None Include="Assets\ExternalAssets\LowPolyWater_Pack\LowPoly Island\Credits.txt" />
+     <None Include="Assets\BrokenVector\LowPolyShaders\Shaders\LowPolyUnlitShader.shader" />
+     <None Include="Assets\BrokenVector\LowPolyShaders\Shaders\LowPolyPBRShader.shader" />
      <None Include="Assets\ExternalAssets\MedievalTownExteriors\Readme FIRST!.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.25f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

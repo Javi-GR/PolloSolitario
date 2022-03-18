@@ -36,7 +36,9 @@ public class Gun : MonoBehaviour
             {
                 shotDistance = hit.distance;
                 ChaserEnemyController target = hit.transform.GetComponent<ChaserEnemyController>();
+                RatEnemyController ratTarget = hit.transform.GetComponent<RatEnemyController>();
                 ShootingEnemyController shootingTarget = hit.transform.GetComponent<ShootingEnemyController>();
+                BeeEnemyController bee = hit.transform.GetComponent<BeeEnemyController>();
                 if(target!=null)
                 {
                     target.TakeDamage(damage);
@@ -44,6 +46,13 @@ public class Gun : MonoBehaviour
                 if(shootingTarget!=null){
 
                     shootingTarget.TakeDamage(damage);
+                }
+                if(ratTarget!=null){
+
+                    ratTarget.TakeDamage(damage);
+                }
+                if(bee!=null){
+                    bee.TakeDamage(damage);
                 }
             }
 
@@ -82,7 +91,7 @@ public class Gun : MonoBehaviour
     }
      private IEnumerator destroyBullet(GameObject bullet){
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.6f);
         Destroy(bullet);
     }
 }

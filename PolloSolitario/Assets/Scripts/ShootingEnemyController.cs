@@ -14,6 +14,8 @@ public class ShootingEnemyController : MonoBehaviour
     public int health = 50;
     StatCount statCount;
 
+    private Animator anim;
+
     //Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -34,8 +36,10 @@ public class ShootingEnemyController : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         particles = GameObject.FindGameObjectWithTag("DamageParticles").GetComponent<ParticleSystem>();
-        agent = GetComponentInChildren<NavMeshAgent>();
+        //agent = GetComponentInChildren<NavMeshAgent>();
+        anim = GetComponent<Animator>();
         statCount = GameObject.FindGameObjectWithTag("HUD").GetComponent<StatCount>();
+        anim.SetBool("Walk", true);
         
        
     }
@@ -56,7 +60,10 @@ public class ShootingEnemyController : MonoBehaviour
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
+        {
             agent.SetDestination(walkPoint);
+        }
+           
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
@@ -93,6 +100,7 @@ public class ShootingEnemyController : MonoBehaviour
 
         if (!alreadyAttacked)
         {
+            anim.SetBool("Attack", true);
             GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 25f, ForceMode.Impulse);
@@ -105,6 +113,7 @@ public class ShootingEnemyController : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
+        anim.SetBool("Attack", false);
     }
 
     public void TakeDamage(int damage)
