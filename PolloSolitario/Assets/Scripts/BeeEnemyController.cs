@@ -11,10 +11,9 @@ public class BeeEnemyController : MonoBehaviour
     GameObject target;
     StatCount statCount;
     ChickenController chicken;
-
     Animator anim;
 
-    public int health = 30;
+    public int health;
 
     public void TakeDamage (int amount)
     {
@@ -62,7 +61,6 @@ public class BeeEnemyController : MonoBehaviour
     }
     public void MoveToPlayer()
     {
-        
         agent.SetDestination(GameObject.FindGameObjectWithTag("Player").transform.position);
     }
     public void Stop(){
@@ -83,11 +81,11 @@ public class BeeEnemyController : MonoBehaviour
         Stop();
         anim.SetBool("Attack", true);
         alreadyAttacking = true;
-        Debug.Log("Player has "+chicken.currentHealth+" health left");
         yield return new WaitForSeconds(0.4f);
-        if(Vector3.Distance(target.transform.position, gameObject.transform.position)<1f)
+        if(Vector3.Distance(target.transform.position, gameObject.transform.position)<1.5f)
         {
             chicken.TakeDamage(10);
+            Debug.Log("Player has "+chicken.currentHealth+" health left");
         }
         Resume();
         alreadyAttacking = false;

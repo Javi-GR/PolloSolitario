@@ -82,10 +82,13 @@ public class RatEnemyController : MonoBehaviour
      IEnumerator attacks(){
         Stop();
         anim.SetBool("Attack", true);
-        chicken.TakeDamage(10);
         alreadyAttacking = true;
-        Debug.Log("Player has "+chicken.currentHealth+" health left");
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.3f);
+       if(Vector3.Distance(target.transform.position, gameObject.transform.position)<1.5f)
+        {
+            chicken.TakeDamage(10);
+            Debug.Log("Player has "+chicken.currentHealth+" health left");
+        }
         Resume();
         alreadyAttacking = false;
     }

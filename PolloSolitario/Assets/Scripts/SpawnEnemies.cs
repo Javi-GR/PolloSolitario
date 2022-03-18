@@ -24,7 +24,7 @@ public class SpawnEnemies : MonoBehaviour
     }
    
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(Vector3.Distance(player.position, gameObject.transform.position)<3f){
             Spawn();

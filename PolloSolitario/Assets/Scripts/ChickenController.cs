@@ -17,17 +17,7 @@ public class ChickenController : MonoBehaviour
 
     private Camera cam;
     private Plane plane;
-    private float dashTime = 0.2f;
     StatCount statCount;
-
-    //NOT YET IMPLEMENTED BELOW 
-    //[SerializeField] private Animator chickenAnim;
-   // [SerializeField] private string chickenRun;
-
-    //[SerializeField] private string chickenRotate;
-    //[SerializeField] private string chickenWalk;
-
-    //NOT YET IMPLEMENTED
 
     public Gun gun;
     
@@ -69,14 +59,13 @@ public class ChickenController : MonoBehaviour
        }else if(Input.GetButton("Shoot"))
        {
            gun.ShootAuto();
-       }else if(Input.GetKeyDown(KeyCode.Space))
-       {
-           StartCoroutine(Dash());
        }
         
     }
     public void StartPoint(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        statCount.ResetRounds();
+        statCount.DisplayRound();
     }
    
     void ControlMouse()
@@ -122,16 +111,7 @@ public class ChickenController : MonoBehaviour
             StartPoint();
         }
     }
-    private IEnumerator Dash()
-    {
-        float startTime = Time.time;
-        while(Time.time < startTime + dashTime)
-        {
-            controller.Move(transform.forward * 12f * Time.deltaTime);
-            yield return null;
-        }
-        
-    }
+   
   
 }
     

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StatCount : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class StatCount : MonoBehaviour
     private int coins = 0;
     private int roundN = 1;
     private bool nextRound = false;
+    public bool completedGame = false;
+    public enum FinalChoice{LIBRE,RICO,POBRE};
+    public FinalChoice currentChoice;
    
     void Update()
     {
@@ -71,8 +75,17 @@ public class StatCount : MonoBehaviour
     {
         timer = 0.0f;
     }
+    public FinalChoice GetFinalChoice()
+    {
+        return currentChoice;
+    }
     public void AddRound(){
         nextRound = true;
+    }
+    public string GetTime()
+    {
+        string time = timerText.text.Remove(0,11);
+        return time;
     }
    
     public void AddKill()
@@ -92,13 +105,27 @@ public class StatCount : MonoBehaviour
     public void LevelCompleted(){
         StartCoroutine(ShowCongratulations());
     }
+    public int GetCoins()
+    {
+        return coins;
+    }
     public void AddCoin(){
         coinTrigger = true;
     }
     private IEnumerator ShowCongratulations(){
-        completedLevel.text = "NIVEL COMPLETADO";
-        yield return new WaitForSeconds(3);
-        completedLevel.text = "";
+        if(SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            completedLevel.text = "PARTIDA COMPLETADA";
+            yield return new WaitForSeconds(3);
+            completedLevel.text = "";
+        }
+        else
+        {
+            completedLevel.text = "NIVEL COMPLETADO";
+            yield return new WaitForSeconds(3);
+            completedLevel.text = "";
+        }
+        
 
     }
 }

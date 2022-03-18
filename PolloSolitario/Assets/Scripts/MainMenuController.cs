@@ -14,4 +14,8 @@ public class MainMenuController : MonoBehaviour
         Debug.Log("Has salido del juego");
         Application.Quit();
     }
+    public void LoadLeaderBoard()
+    {
+        SceneManager.LoadScene(5);
+    }
 }
