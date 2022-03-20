@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class AnimController : MonoBehaviour
 {
+    // Animator component of the player
     Animator animator;
+    //Hash that represents the walking state in the animator
     int isWalkingHash;
+    //Hash that represents running state in animator
     int isRunningHash;
 
+    //Grabs references for the animator ocmponent and both hashes
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -15,7 +19,6 @@ public class AnimController : MonoBehaviour
         isRunningHash = Animator.StringToHash("Run");
     }
 
-    // Update is called once per frame
     void Update()
     {
         bool isRunning = animator.GetBool(isRunningHash);
@@ -43,7 +46,7 @@ public class AnimController : MonoBehaviour
         {
             animator.SetBool(isRunningHash, true);
         }
-
+        //if the player releases the shift button to sprint
         if(isRunning && !runPressed)
         {
             animator.SetBool(isRunningHash, false);

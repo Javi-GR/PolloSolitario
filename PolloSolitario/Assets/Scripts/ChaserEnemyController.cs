@@ -77,7 +77,7 @@ public class ChaserEnemyController : MonoBehaviour
         chicken.TakeDamage(10);
         alreadyAttacking = true;
         Debug.Log("Player has "+chicken.currentHealth+" health left");
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.2f);
         Resume();
         alreadyAttacking = false;
     }

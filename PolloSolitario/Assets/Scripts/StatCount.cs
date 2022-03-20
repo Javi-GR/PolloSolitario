@@ -20,6 +20,8 @@ public class StatCount : MonoBehaviour
     private int roundN = 1;
     private bool nextRound = false;
     public bool completedGame = false;
+    public bool roundsCompleted = false;
+
     public enum FinalChoice{LIBRE,RICO,POBRE};
     public FinalChoice currentChoice;
    
@@ -115,7 +117,13 @@ public class StatCount : MonoBehaviour
     private IEnumerator ShowCongratulations(){
         if(SceneManager.GetActiveScene().buildIndex == 4)
         {
-            completedLevel.text = "PARTIDA COMPLETADA";
+            roundsCompleted = true;
+            completedLevel.text = "FIN";
+            yield return new WaitForSeconds(3);
+            completedLevel.text = "";
+            yield return new WaitForSeconds(3);
+            completedLevel.fontSize = 18;
+            completedLevel.text = "SUBE POR LA CARRETERA";
             yield return new WaitForSeconds(3);
             completedLevel.text = "";
         }

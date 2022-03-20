@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class NextLevelTrigger : MonoBehaviour
 {
+    //Reference to the statcount component in the HUD
     StatCount statCount;
+    //animator of the sheriff badge between levels
     public Animator transition;
 
     void Start()
@@ -13,13 +15,20 @@ public class NextLevelTrigger : MonoBehaviour
         statCount = GameObject.FindGameObjectWithTag("HUD").GetComponent<StatCount>();
 
     }
+
     void OnTriggerEnter(Collider other){
         
         if(other.gameObject.name == ("Player"))
         {
-            Debug.Log("Has superado el nivel");
-            DontDestroyOnLoad(GameObject.FindGameObjectWithTag("HUD"));
-            LoadNextLevel();
+            if(SceneManager.GetActiveScene().buildIndex == 4)
+            {
+                SceneManager.LoadScene(5);
+            }
+            else{
+                Debug.Log("Has superado el nivel");
+                DontDestroyOnLoad(GameObject.FindGameObjectWithTag("HUD"));
+                LoadNextLevel();
+            }
         }
        
     }

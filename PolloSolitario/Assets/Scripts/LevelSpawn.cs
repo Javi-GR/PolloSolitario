@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class LevelSpawn : MonoBehaviour
 {
+    //Enums that represents the current state of the round
     public enum SpawnState{ SPAWNING, WAITING, COUNTING, COMPLETE};
+
+    //Wave class that makes it really easy to create a new wave with the rounds, enemies, rate and count you want
     [System.Serializable]
     public class Wave
     {
@@ -13,18 +16,23 @@ public class LevelSpawn : MonoBehaviour
         public int count;
         public float rate;
     }
-
+    //Array that represents the amount of waves in the level
     public Wave[] waves;
+    //Statcount in the HUD reference
     StatCount statCount;
-
     private int nextWave = 0;
+    //Transforms of where the enmy spawns
     public Transform[] spawnPoints;
-
+    //Time between each wave
     public float timeBetweenWaves = 5f;
+    //The state that is associated by default
     private SpawnState state = SpawnState.COUNTING;
-
+    //To make the countdown between each round
     private float waveCountdown;
+    //This is to check if an enemy is alive each 1 second,
+    // so we dont oversaturate the update method calling each frame to look for an alive enemy
     private float searchCountdown = 1f;
+    //The audio played after each round
     public AudioSource audioRound;
 
     void Start()

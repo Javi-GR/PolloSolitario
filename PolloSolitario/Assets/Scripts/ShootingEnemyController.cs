@@ -89,17 +89,19 @@ public class ShootingEnemyController : MonoBehaviour
         agent.SetDestination(player.position);
 
     }
-
+    //Attack function of the shooting enemy
     private void AttackPlayer()
     {
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
-        
+        //Enemy looks at player to shoot
         Vector3 rotationOffset = new Vector3(player.position.x, player.position.y, player.position.z);
         transform.LookAt(player);
 
+        //Checks if not already attacking
         if (!alreadyAttacked)
         {
+            //Attacks and calls reset attack
             anim.SetBool("Attack", true);
             GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
@@ -110,12 +112,13 @@ public class ShootingEnemyController : MonoBehaviour
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
+    //Resets the attack of the enemy so it doesnt shoot constantly
     private void ResetAttack()
     {
         alreadyAttacked = false;
         anim.SetBool("Attack", false);
     }
-
+    //Function of the enemy to deal damage to him
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -124,12 +127,13 @@ public class ShootingEnemyController : MonoBehaviour
 
         if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
     }
+    //Function that destroys the enmy object and adds a kill to the statcount
     private void DestroyEnemy()
     {
         Destroy(gameObject);
         statCount.AddKill();
     }
-
+    //Funciton to see the attack range and sight range in gizmos
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -137,10 +141,10 @@ public class ShootingEnemyController : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
-
+    //Destroys the projectile of the enmy after 0.4s
     private IEnumerator destroyBullet(GameObject bullet){
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.4f);
         if(bullet!=null){
             Destroy(bullet);
         }

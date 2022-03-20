@@ -83,7 +83,7 @@ public class RatEnemyController : MonoBehaviour
         Stop();
         anim.SetBool("Attack", true);
         alreadyAttacking = true;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
        if(Vector3.Distance(target.transform.position, gameObject.transform.position)<1.5f)
         {
             chicken.TakeDamage(10);
